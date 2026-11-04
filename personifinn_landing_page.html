@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personifinn | Elevate your personal finance with AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        fintech: {
+                            dark: '#0B1120',
+                            card: '#1E293B',
+                            teal: '#14B8A6',
+                            blue: '#3B82F6',
+                            accent: '#06B6D4'
+                        }
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0B1120;
+            color: #F8FAFC;
+        }
+        .glass-nav {
+            background: rgba(11, 17, 32, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .text-gradient {
+            background: linear-gradient(to right, #3B82F6, #14B8A6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden selection:bg-fintech-teal selection:text-white">
+
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-teal-400 flex items-center justify-center">
+                        <i class="ph ph-infinity text-xl text-white"></i>
+                    </div>
+                    <span class="font-bold text-xl tracking-tight text-white">personifinn</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#features" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Features</a>
+                    <a href="#ai-auditor" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">AI Auditor</a>
+                    <a href="#security" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Security</a>
+                </div>
+                <div class="flex items-center">
+                    <a href="#waitlist" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-medium rounded-full text-white bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-500 hover:to-teal-400 shadow-lg shadow-teal-500/25 transition-all hover:scale-105">
+                        Join Waitlist
+                    </a>
+                    <!-- Mobile menu button -->
+                    <button class="md:hidden text-slate-300 hover:text-white focus:outline-none">
+                        <i class="ph ph-list text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+            <!-- Animated Background Blobs -->
+            <div class="absolute top-0 -left-4 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+            <div class="absolute top-0 -right-4 w-72 h-72 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+            <div class="absolute -bottom-8 left-20 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="lg:grid lg:grid-cols-12 lg:gap-16 items-center">
+                    
+                    <!-- Hero Content -->
+                    <div class="lg:col-span-6 text-center lg:text-left animate-fade-in-up">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-card text-sm font-medium text-teal-400 mb-6">
+                            <span class="relative flex h-2 w-2">
+                              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
+                              <span class="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
+                            </span>
+                            Private Beta Commencing Soon
+                        </div>
+                        <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
+                            Elevate your personal finance with <span class="text-gradient">AI.</span>
+                        </h1>
+                        <p class="text-lg sm:text-xl text-slate-400 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                            Orchestrate every wallet, bank, and transaction in one intelligent dashboard. Let your personal AI auditor optimize your cash flow, automate payments, and help you reach your goals.
+                        </p>
+                        
+                        <!-- Waitlist Form -->
+                        <div id="waitlist" class="max-w-md mx-auto lg:mx-0 relative">
+                            <form class="flex flex-col sm:flex-row gap-3">
+                                <div class="relative flex-grow">
+                                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                        <i class="ph ph-envelope-simple text-slate-400 text-lg"></i>
+                                    </div>
+                                    <input type="email" required placeholder="Enter your email address" class="block w-full pl-11 pr-4 py-3.5 bg-slate-800/50 border border-slate-700 rounded-xl text-slate-200 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all">
+                                </div>
+                                <button type="submit" class="w-full sm:w-auto px-8 py-3.5 border border-transparent text-base font-semibold rounded-xl text-white bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-500 hover:to-teal-400 shadow-lg shadow-teal-500/25 transition-all hover:-translate-y-0.5 whitespace-nowrap flex items-center justify-center gap-2">
+                                    Join Waitlist <i class="ph ph-arrow-right font-bold"></i>
+                                </button>
+                            </form>
+                            <p class="mt-3 text-sm text-slate-500 flex items-center justify-center lg:justify-start gap-1">
+                                <i class="ph-fill ph-lock-key"></i> No spam. Unsubscribe anytime.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Hero Image / Abstract UI representation -->
+                    <div class="lg:col-span-6 mt-16 lg:mt-0 relative hidden sm:block animate-fade-in-up" style="animation-delay: 0.2s;">
+                        <div class="relative w-full aspect-square max-w-lg mx-auto">
+                            <!-- Central Hub -->
+                            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-gradient-to-tr from-blue-600 to-teal-400 rounded-full blur-[60px] opacity-60"></div>
+                            
+                            <!-- Main App Card Mockup -->
+                            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-sm glass-card rounded-3xl border border-slate-700 p-6 shadow-2xl">
+                                <div class="flex justify-between items-center mb-6">
+                                    <div>
+                                        <p class="text-sm text-slate-400">Total Net Worth</p>
+                                        <h3 class="text-3xl font-bold text-white">$124,500.00</h3>
+                                    </div>
+                                    <div class="w-10 h-10 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-400">
+                                        <i class="ph-fill ph-trend-up"></i>
+                                    </div>
+                                </div>
+                                
+                                <!-- Mock connection pills -->
+                                <div class="space-y-3 mb-6">
+                                    <div class="flex items-center justify-between p-3 rounded-xl bg-slate-800/50 border border-slate-700/50">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center"><i class="ph-fill ph-bank text-white"></i></div>
+                                            <span class="font-medium text-sm">Chase Bank</span>
+                                        </div>
+                                        <span class="font-semibold text-sm">$4,200.00</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-3 rounded-xl bg-slate-800/50 border border-slate-700/50">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center"><i class="ph-fill ph-paypal-logo text-white"></i></div>
+                                            <span class="font-medium text-sm">PayPal</span>
+                                        </div>
+                                        <span class="font-semibold text-sm">$850.00</span>
+                                    </div>
+                                </div>
+
+                                <!-- AI Chat snippet -->
+                                <div class="bg-slate-900 rounded-xl p-4 border border-slate-700">
+                                    <div class="flex items-start gap-3">
+                                        <div class="w-6 h-6 mt-1 rounded-full bg-gradient-to-br from-blue-500 to-teal-400 flex items-center justify-center shrink-0">
+                                            <i class="ph ph-sparkle text-xs text-white"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs text-slate-300 leading-relaxed">Based on your recent spending, you can save an extra $200 this month by reducing subscriptions. Shall I move it to your RDN wallet?</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Floating Elements -->
+                            <div class="absolute -right-4 top-1/4 glass-card p-3 rounded-xl border border-slate-700 shadow-xl animate-bounce" style="animation-duration: 3s;">
+                                <div class="flex items-center gap-2">
+                                    <i class="ph-fill ph-check-circle text-teal-400"></i>
+                                    <span class="text-xs font-semibold">Invoice Paid</span>
+                                </div>
+                            </div>
+                            <div class="absolute -left-8 bottom-1/3 glass-card p-3 rounded-xl border border-slate-700 shadow-xl animate-bounce" style="animation-duration: 4s; animation-delay: 1s;">
+                                <div class="flex items-center gap-2">
+                                    <i class="ph-fill ph-qr-code text-blue-400 text-lg"></i>
+                                    <span class="text-xs font-semibold">QRIS Ready</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="py-24 bg-slate-900/50 border-t border-slate-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-teal-400 font-semibold tracking-wide uppercase text-sm mb-3">Complete Orchestration</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold mb-4">Everything about your money, in one place.</h3>
+                    <p class="text-slate-400 text-lg">Personifinn erases the boundaries between your accounts. Manage, spend, receive, and analyze without ever switching apps.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Feature 1 -->
+                    <div class="glass-card p-8 rounded-2xl hover:-translate-y-1 transition-transform duration-300 group cursor-default">
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-colors">
+                            <i class="ph ph-squares-four text-2xl text-blue-400"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-3">Universal Dashboard</h4>
+                        <p class="text-slate-400 leading-relaxed text-sm">
+                            Connect your e-wallets, bank accounts, PayPal, RDN wallets, and more. If it holds money, Personifinn natively integrates it into a single, unified view.
+                        </p>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="glass-card p-8 rounded-2xl hover:-translate-y-1 transition-transform duration-300 group cursor-default">
+                        <div class="w-12 h-12 rounded-xl bg-teal-500/10 flex items-center justify-center mb-6 group-hover:bg-teal-500/20 transition-colors">
+                            <i class="ph ph-arrows-left-right text-2xl text-teal-400"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-3">Zero-Admin Payments</h4>
+                        <p class="text-slate-400 leading-relaxed text-sm">
+                            Pay for anything via bank transfer, credit card, or QRIS. Select which wallet to pull from, and we handle the cross-transfer instantly—erasing admin fees.
+                        </p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="glass-card p-8 rounded-2xl hover:-translate-y-1 transition-transform duration-300 group cursor-default">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-6 group-hover:bg-cyan-500/20 transition-colors">
+                            <i class="ph ph-receipt text-2xl text-cyan-400"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-3">Smart Receive & Invoice</h4>
+                        <p class="text-slate-400 leading-relaxed text-sm">
+                            Generate dynamic QR codes to receive funds to any wallet. Automatically send invoices and billing reminders to clients via WhatsApp or Email.
+                        </p>
+                    </div>
+
+                    <!-- Feature 4 -->
+                    <div class="glass-card p-8 rounded-2xl hover:-translate-y-1 transition-transform duration-300 group cursor-default">
+                        <div class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center mb-6 group-hover:bg-purple-500/20 transition-colors">
+                            <i class="ph ph-chart-line-up text-2xl text-purple-400"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-3">Automated Tracking</h4>
+                        <p class="text-slate-400 leading-relaxed text-sm">
+                            Never log an expense manually again. Personifinn automatically detects and categorizes transactions from bank syncs and email receipts.
+                        </p>
+                    </div>
+
+                    <!-- Feature 5 -->
+                    <div class="glass-card p-8 rounded-2xl hover:-translate-y-1 transition-transform duration-300 group cursor-default relative overflow-hidden border-teal-500/30">
+                        <div class="absolute inset-0 bg-gradient-to-br from-teal-500/5 to-blue-500/5"></div>
+                        <div class="relative z-10">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-blue-500 to-teal-400 flex items-center justify-center mb-6 shadow-lg shadow-teal-500/20">
+                                <i class="ph-fill ph-robot text-2xl text-white"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-white mb-3">AI Financial Auditor</h4>
+                            <p class="text-slate-400 leading-relaxed text-sm">
+                                Stop reading dry reports. Chat directly with your AI to get cash flow recommendations, set complex wallet goals, and receive actionable steps to achieve them.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Feature 6 -->
+                    <div class="glass-card p-8 rounded-2xl hover:-translate-y-1 transition-transform duration-300 group cursor-default">
+                        <div class="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center mb-6 group-hover:bg-orange-500/20 transition-colors">
+                            <i class="ph ph-devices text-2xl text-orange-400"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-3">Offline-First & Sync</h4>
+                        <p class="text-slate-400 leading-relaxed text-sm">
+                            Available on iOS, Android, and Web with Single Sign-On. Log manual cash transactions even offline; we'll securely sync everything the moment you're reconnected.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ai-auditor" class="py-24 relative overflow-hidden">
+            <!-- Background Elements -->
+            <div class="absolute inset-0 bg-slate-900"></div>
+            <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[800px] h-[400px] bg-blue-600/20 blur-[100px] rounded-full pointer-events-none"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="bg-gradient-to-b from-slate-800/80 to-slate-900 border border-slate-700 rounded-3xl p-8 md:p-16 flex flex-col lg:flex-row items-center gap-12 shadow-2xl">
+                    
+                    <div class="lg:w-1/2 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 text-teal-400 font-semibold mb-4 text-sm uppercase tracking-wider">
+                            <i class="ph-fill ph-sparkle"></i> Meet your new advisor
+                        </div>
+                        <h2 class="text-3xl md:text-5xl font-bold mb-6 text-white">Your personal finance auditor, powered by AI.</h2>
+                        <p class="text-slate-400 text-lg mb-8">
+                            Imagine having a world-class financial advisor in your pocket 24/7. Personifinn analyzes your cross-wallet behaviors, detects hidden subscriptions, and builds personalized roadmaps to hit your savings goals.
+                        </p>
+                        <ul class="space-y-4 mb-8 text-left inline-block">
+                            <li class="flex items-center gap-3">
+                                <div class="w-6 h-6 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-400 shrink-0">
+                                    <i class="ph ph-check"></i>
+                                </div>
+                                <span class="text-slate-300">Natural language queries ("How much did I spend on food this week?")</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div class="w-6 h-6 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-400 shrink-0">
+                                    <i class="ph ph-check"></i>
+                                </div>
+                                <span class="text-slate-300">Proactive alerts for unusual spending patterns</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div class="w-6 h-6 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-400 shrink-0">
+                                    <i class="ph ph-check"></i>
+                                </div>
+                                <span class="text-slate-300">Dynamic budgeting adjusted in real-time</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- AI Interface Mockup -->
+                    <div class="lg:w-1/2 w-full max-w-md mx-auto">
+                        <div class="bg-slate-950 rounded-2xl border border-slate-800 shadow-2xl overflow-hidden flex flex-col h-[400px]">
+                            <!-- Chat Header -->
+                            <div class="p-4 border-b border-slate-800 bg-slate-900/50 flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-teal-400 flex items-center justify-center">
+                                    <i class="ph-fill ph-robot text-white text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-semibold text-sm">Finny AI</h4>
+                                    <p class="text-teal-400 text-xs flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-teal-400 inline-block"></span> Online</p>
+                                </div>
+                            </div>
+                            <!-- Chat Body -->
+                            <div class="flex-grow p-4 space-y-4 overflow-y-auto">
+                                <div class="flex justify-end">
+                                    <div class="bg-blue-600 text-white text-sm rounded-2xl rounded-tr-sm py-2 px-4 max-w-[85%]">
+                                        Can I afford to buy a $1,200 laptop next month?
+                                    </div>
+                                </div>
+                                <div class="flex justify-start">
+                                    <div class="bg-slate-800 text-slate-200 text-sm rounded-2xl rounded-tl-sm py-3 px-4 max-w-[90%] border border-slate-700">
+                                        <p class="mb-2">Looking at your current cash flow across your Chase Bank and RDN wallet, you have $950 in disposable income projected for next month.</p>
+                                        <p><strong>Recommendation:</strong> If you cancel your unused gym subscription and transfer $150 from your PayPal balance, you can safely make the purchase without hitting your emergency fund. Shall I execute the PayPal transfer?</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Chat Input -->
+                            <div class="p-3 bg-slate-900 border-t border-slate-800 flex items-center gap-2">
+                                <div class="flex-grow bg-slate-800 rounded-full py-2 px-4 text-sm text-slate-400 border border-slate-700">Type a message...</div>
+                                <div class="w-9 h-9 rounded-full bg-blue-600 flex items-center justify-center text-white shrink-0">
+                                    <i class="ph-fill ph-paper-plane-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-950 border-t border-slate-800 pt-16 pb-8 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-1">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-6 h-6 rounded-md bg-gradient-to-br from-blue-500 to-teal-400 flex items-center justify-center">
+                            <i class="ph ph-infinity text-sm text-white"></i>
+                        </div>
+                        <span class="font-bold text-lg tracking-tight text-white">personifinn</span>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Elevating personal finance with intelligent orchestration and AI-driven insights. Built for the modern wealth builder.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-slate-500 hover:text-white transition-colors"><i class="ph-fill ph-twitter-logo text-xl"></i></a>
+                        <a href="#" class="text-slate-500 hover:text-white transition-colors"><i class="ph-fill ph-linkedin-logo text-xl"></i></a>
+                        <a href="#" class="text-slate-500 hover:text-white transition-colors"><i class="ph-fill ph-instagram-logo text-xl"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Product</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-slate-400 hover:text-teal-400 transition-colors">Universal Dashboard</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-teal-400 transition-colors">Payment Gateway</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-teal-400 transition-colors">Smart Invoicing</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-teal-400 transition-colors">AI Auditor</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-slate-400 hover:text-teal-400 transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-teal-400 transition-colors">Careers</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-teal-400 transition-colors">Blog</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-teal-400 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Legal</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-slate-400 hover:text-teal-400 transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-teal-400 transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-teal-400 transition-colors">Security</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-slate-500 text-sm">
+                    &copy; 2026 Personifinn Inc. All rights reserved.
+                </p>
+                <div class="flex items-center gap-2 text-sm text-slate-500">
+                    <i class="ph-fill ph-lock-key text-teal-500"></i> Bank-grade 256-bit encryption
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple form submission prevention for the demo
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('button');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="ph-fill ph-check-circle text-lg"></i> Added to Waitlist!';
+            btn.classList.add('bg-green-500');
+            btn.classList.remove('from-blue-600', 'to-teal-500');
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.classList.remove('bg-green-500');
+                btn.classList.add('from-blue-600', 'to-teal-500');
+                this.reset();
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
