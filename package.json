@@ -1,0 +1,17 @@
+{
+  "name": "personifinn",
+  "version": "1.0.0",
+  "description": "Personal finance dashboard with an AI auditor",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.9.0"
+  }
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Personifinn</title>
+    <meta name="theme-color" content="#0B1120">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- shortcut: Tailwind Play CDN, same as the landing page; switch to a built stylesheet if load time or strict CSP matters. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+    <script>
+        tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
+    </script>
+    <style>
+        body { background-color: #0B1120; color: #F8FAFC; }
+        .card { background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 1rem; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: .4rem; padding: .55rem 1rem; border-radius: .75rem; font-weight: 600; font-size: .875rem; transition: filter .15s; }
+        .btn:hover { filter: brightness(1.15); }
+        .btn-primary { color: #fff; background: linear-gradient(to right, #2563EB, #14B8A6); }
+        .btn-ghost { color: #CBD5E1; background: rgba(51, 65, 85, 0.6); }
+        .btn-danger { color: #FCA5A5; background: rgba(127, 29, 29, 0.35); }
+        .field { width: 100%; padding: .6rem .8rem; background: rgba(15, 23, 42, 0.8); border: 1px solid #334155; border-radius: .75rem; color: #E2E8F0; font-size: .9rem; }
+        .field:focus-visible, .btn:focus-visible, a:focus-visible, button:focus-visible { outline: 2px solid #14B8A6; outline-offset: 2px; }
+        label { display: block; font-size: .8rem; color: #94A3B8; margin-bottom: .25rem; }
+        .nav-on { color: #2DD4BF; background: rgba(20, 184, 166, 0.1); }
+        .num { font-variant-numeric: tabular-nums; }
+    </style>
+</head>
+<body class="antialiased font-sans">
+    <div id="root"></div>
+    <div id="modal" class="hidden fixed inset-0 z-50 bg-black/70 flex items-end sm:items-center justify-center p-0 sm:p-4" role="dialog" aria-modal="true"></div>
+    <div id="toast" class="hidden fixed bottom-24 md:bottom-6 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-600 text-sm shadow-xl" role="status"></div>
+    <script src="/app.js"></script>
+</body>
+</html>

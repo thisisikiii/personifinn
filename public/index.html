@@ -100,6 +100,7 @@
                     </a>
                 </div>
                 <div class="flex items-center">
+                    <a href="/app" class="text-sm font-medium text-slate-300 hover:text-white transition-colors mr-4">Sign in</a>
                     <a href="#waitlist" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-medium rounded-full text-white bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-500 hover:to-teal-400 shadow-lg shadow-teal-500/25 transition-all hover:scale-105">
                         Join Waitlist
                     </a>
@@ -489,6 +490,8 @@
 
             try {
                 const formData = new FormData(form);
+                // Keep a copy of the sign-up in this app's own database.
+                fetch('/api/waitlist', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: formData.get('email') }) }).catch(() => {});
                 const response = await fetch(form.action, {
                     method: 'POST',
                     body: formData,

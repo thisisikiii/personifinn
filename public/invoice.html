@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>Invoice | Personifinn</title>
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>body { background-color: #0B1120; color: #F8FAFC; font-family: Inter, sans-serif; }</style>
+</head>
+<body class="antialiased min-h-screen flex items-center justify-center p-4">
+    <main id="invoice" class="w-full max-w-md rounded-2xl border border-slate-700 bg-slate-800/50 p-6">Loading…</main>
+    <script>
+        const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+        (async () => {
+            const box = document.getElementById('invoice');
+            const res = await fetch('/api/public/invoices/' + encodeURIComponent(location.pathname.split('/')[2] ?? ''));
+            if (!res.ok) { box.textContent = 'This invoice does not exist or was removed.'; return; }
+            const i = await res.json();
+            const fmt = (c) => new Intl.NumberFormat(undefined, { style: 'currency', currency: i.currency, maximumFractionDigits: ['IDR', 'JPY'].includes(i.currency) ? 0 : 2 }).format(c / 100);
+            document.title = `Invoice ${i.number} | Personifinn`;
+            box.innerHTML = `
+                <div class="flex justify-between items-start mb-6">
+                    <div><p class="text-sm text-slate-400">Invoice ${esc(i.number)}</p><h1 class="text-xl font-bold">${esc(i.issuer)}</h1></div>
+                    <span class="text-xs px-2.5 py-1 rounded-full ${i.status === 'paid' ? 'bg-teal-500/15 text-teal-400' : 'bg-amber-500/15 text-amber-400'}">${i.status === 'paid' ? 'Paid' : 'Unpaid'}</span>
+                </div>
+                <p class="text-sm text-slate-400 mb-4">Billed to <span class="text-slate-200">${esc(i.client_name)}</span>${i.due ? ` · due <span class="text-slate-200">${esc(i.due)}</span>` : ''}</p>
+                <ul class="divide-y divide-slate-700 text-sm mb-4">${i.items.map(x => `<li class="flex justify-between gap-4 py-2"><span>${esc(x.description)}</span><span class="tabular-nums">${fmt(x.amount)}</span></li>`).join('')}</ul>
+                <div class="flex justify-between items-center border-t border-slate-600 pt-4 mb-4"><span class="font-semibold">Total</span><span class="text-2xl font-bold tabular-nums">${fmt(i.total)}</span></div>
+                ${i.instructions && i.status !== 'paid' ? `<div class="rounded-xl bg-slate-900 border border-slate-700 p-4 text-sm"><p class="text-teal-400 font-semibold mb-1">How to pay</p><p class="whitespace-pre-line text-slate-300">${esc(i.instructions)}</p></div>` : ''}
+                <p class="text-xs text-slate-500 mt-6 text-center">Sent with <a href="/" class="underline">Personifinn</a></p>`;
+        })();
+    </script>
+</body>
+</html>
