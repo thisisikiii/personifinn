@@ -383,6 +383,7 @@ const actions = {
 const forms = {
   async auth(d) {
     await api('POST', '/api/auth/' + authMode, d);
+    authMode = 'login'; // the next sign-in screen, after signing out, is the sign-in form
     await load();
   },
   async tx(d) {

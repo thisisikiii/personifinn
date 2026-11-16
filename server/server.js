@@ -10,13 +10,13 @@ import { chat } from './ai.js';
 const PUBLIC = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'public');
 const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8',
   '.svg': 'image/svg+xml', '.webmanifest': 'application/manifest+json', '.png': 'image/png', '.ico': 'image/x-icon' };
-const PAGES = { '/': 'index.html', '/app': 'app.html' };
+const PAGES = { '/': 'index.html', '/app': 'app.html', '/favicon.ico': 'icon.svg' };
 const SESSION_DAYS = 30;
 const WALLET_TYPES = ['bank', 'ewallet', 'cash', 'paypal', 'rdn', 'card', 'other'];
 const CURRENCIES = ['IDR', 'USD', 'EUR', 'SGD', 'MYR', 'JPY', 'GBP', 'AUD'];
 const CSP = "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com https://cdnjs.cloudflare.com; "
-  + "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src https://fonts.gstatic.com https://unpkg.com; "
-  + "img-src 'self' data:; connect-src 'self' https://formsubmit.co https://cdn.tailwindcss.com https://unpkg.com https://cdnjs.cloudflare.com https://fonts.googleapis.com https://fonts.gstatic.com; form-action 'self' https://formsubmit.co; frame-ancestors 'none'; base-uri 'self'";
+  + "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com https://cdn.jsdelivr.net; font-src https://fonts.gstatic.com https://unpkg.com https://cdn.jsdelivr.net; "
+  + "img-src 'self' data:; connect-src 'self' https://formsubmit.co https://cdn.tailwindcss.com https://unpkg.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://fonts.googleapis.com https://fonts.gstatic.com; form-action 'self' https://formsubmit.co; frame-ancestors 'none'; base-uri 'self'";
 
 class HttpError extends Error {
   constructor(status, message) { super(message); this.status = status; }
