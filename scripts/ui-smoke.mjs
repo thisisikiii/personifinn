@@ -182,7 +182,7 @@ await step('sign out and back in', async () => {
   await page.fill('#f-email', email);
   await page.fill('#f-password', password);
   await page.getByRole('button', { name: 'Sign in' }).click();
-  await page.getByRole('heading', { name: 'Hi, Smoke Tester' }).waitFor();
+  await page.getByRole('heading', { name: 'Settings' }).waitFor(); // signing in returns to the screen that was open
 });
 await step('delete account', async () => {
   await go('settings');
