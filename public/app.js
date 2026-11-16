@@ -89,7 +89,7 @@ function toast(msg) {
 function modal(title, body) {
   $('#modal').innerHTML = `<div class="card bg-slate-900 w-full sm:max-w-lg max-h-[92vh] overflow-y-auto p-5 rounded-b-none sm:rounded-2xl">
     <div class="flex justify-between items-center mb-4"><h2 class="text-lg font-bold">${esc(title)}</h2>
-    <button data-act="close" aria-label="Close" class="text-slate-400 hover:text-white text-xl"><i class="ph ph-x"></i></button></div>${body}</div>`;
+    <button data-act="close" aria-label="Close" class="text-slate-400 hover:text-white text-xl"><i aria-hidden="true" class="ph ph-x"></i></button></div>${body}</div>`;
   $('#modal').classList.remove('hidden');
   $('#modal input:not([type=hidden]), #modal select')?.focus();
 }
@@ -97,7 +97,7 @@ const closeModal = () => $('#modal').classList.add('hidden');
 const options = (list, selected) => list.map(([v, label]) => `<option value="${esc(v)}" ${String(v) === String(selected) ? 'selected' : ''}>${esc(label)}</option>`).join('');
 const walletOptions = (selected) => options(S.wallets.map(w => [w.id, w.name]), selected);
 const input = (name, label, attrs = '', value = '') => `<div><label for="f-${name}">${label}</label><input id="f-${name}" name="${name}" class="field" value="${esc(value)}" ${attrs}></div>`;
-const empty = (icon, text) => `<div class="text-center text-slate-500 py-10"><i class="ph ph-${icon} text-4xl"></i><p class="mt-2 text-sm">${text}</p></div>`;
+const empty = (icon, text) => `<div class="text-center text-slate-500 py-10"><i aria-hidden="true" class="ph ph-${icon} text-4xl"></i><p class="mt-2 text-sm">${text}</p></div>`;
 const bar = (pct, color = 'bg-teal-500') => `<div class="h-2 rounded-full bg-slate-800 overflow-hidden"><div class="h-full ${color}" style="width:${Math.min(100, Math.max(0, pct))}%"></div></div>`;
 const heading = (title, right = '') => `<div class="flex flex-wrap justify-between items-center gap-3 mb-6"><h1 class="text-2xl font-bold">${title}</h1><div class="flex gap-2">${right}</div></div>`;
 
@@ -127,7 +127,7 @@ function txRow(t) {
   const icon = t.type === 'income' ? 'arrow-down-left' : t.type === 'expense' ? 'arrow-up-right' : 'arrows-left-right';
   const where = t.type === 'transfer' ? `${walletName(t.wallet_id)} → ${walletName(t.to_wallet_id)}` : walletName(t.wallet_id);
   return `<button data-act="editTx" data-id="${esc(t.id)}" class="w-full flex items-center gap-3 py-2.5 px-2 rounded-lg hover:bg-slate-800/60 text-left">
-    <span class="w-9 h-9 shrink-0 rounded-full bg-slate-800 flex items-center justify-center ${color}"><i class="ph ph-${icon}"></i></span>
+    <span class="w-9 h-9 shrink-0 rounded-full bg-slate-800 flex items-center justify-center ${color}"><i aria-hidden="true" class="ph ph-${icon}"></i></span>
     <span class="flex-1 min-w-0"><span class="block text-sm font-medium truncate">${esc(t.note || t.category)}</span>
       <span class="block text-xs text-slate-500 truncate">${esc(t.date)} · ${esc(where)} · ${esc(t.category)}${t.pending ? ' · <span class="text-amber-400">waiting to sync</span>' : ''}</span></span>
     <span class="num text-sm font-semibold ${color}">${sign}${fmt(t.amount)}</span></button>`;
@@ -139,17 +139,17 @@ const views = {
     const max = Math.max(1, ...S.months.flatMap(m => [m.income, m.expense]));
     const top = Math.max(1, ...S.byCategory.map(c => c.spent));
     const stat = (label, value, cls = '') => `<div class="card p-4"><p class="text-xs text-slate-400">${label}</p><p class="num text-xl font-bold mt-1 ${cls}">${value}</p></div>`;
-    return `${heading(`Hi, ${esc(S.user.name)}`, `<button data-act="addTx" class="btn btn-primary"><i class="ph ph-plus"></i> Add transaction</button>`)}
+    return `${heading(`Hi, ${esc(S.user.name)}`, `<button data-act="addTx" class="btn btn-primary"><i aria-hidden="true" class="ph ph-plus"></i> Add transaction</button>`)}
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
         ${stat('Total net worth', fmt(net))}${stat('Income this month', fmt(now.income), 'text-teal-400')}
         ${stat('Spending this month', fmt(now.expense))}${stat('Net this month', fmt(now.income - now.expense), now.income < now.expense ? 'text-rose-400' : '')}
       </div>
-      ${S.alerts.length ? `<div class="card p-4 mb-4 border-teal-500/30"><p class="text-sm font-semibold text-teal-400 mb-2"><i class="ph-fill ph-sparkle"></i> Finny noticed</p>
+      ${S.alerts.length ? `<div class="card p-4 mb-4 border-teal-500/30"><p class="text-sm font-semibold text-teal-400 mb-2"><i aria-hidden="true" class="ph-fill ph-sparkle"></i> Finny noticed</p>
         <ul class="text-sm text-slate-300 space-y-1">${S.alerts.map(a => `<li>• ${esc(a.text)}</li>`).join('')}</ul>
         <a href="#/finny" class="inline-block mt-2 text-sm text-teal-400 hover:underline">Ask Finny about it →</a></div>` : ''}
       <div class="grid lg:grid-cols-2 gap-4">
         <div class="card p-4"><h2 class="font-semibold mb-3">Wallets</h2>${S.wallets.map(w => `<div class="flex justify-between py-1.5 text-sm">
-          <span><i class="ph ph-${WALLET_TYPES[w.type][1]} text-teal-400 mr-2"></i>${esc(w.name)}</span><span class="num font-semibold">${fmt(w.balance)}</span></div>`).join('')}</div>
+          <span><i aria-hidden="true" class="ph ph-${WALLET_TYPES[w.type][1]} text-teal-400 mr-2"></i>${esc(w.name)}</span><span class="num font-semibold">${fmt(w.balance)}</span></div>`).join('')}</div>
         <div class="card p-4"><h2 class="font-semibold mb-3">Last 6 months</h2><div class="flex items-end gap-3 h-36">${S.months.map(m => `
           <div class="flex-1 flex flex-col items-center gap-1 h-full justify-end" title="${esc(m.month)}: in ${esc(fmt(m.income))}, out ${esc(fmt(m.expense))}">
             <div class="flex items-end gap-1 w-full flex-1"><div class="flex-1 bg-teal-500 rounded-t" style="height:${m.income / max * 100}%"></div>
@@ -163,17 +163,17 @@ const views = {
   },
 
   transactions() {
-    return `${heading('Transactions', `<button data-act="importCsv" class="btn btn-ghost"><i class="ph ph-upload-simple"></i> Import CSV</button>
-        <button data-act="addTx" class="btn btn-primary"><i class="ph ph-plus"></i> Add</button>`)}
+    return `${heading('Transactions', `<button data-act="importCsv" class="btn btn-ghost"><i aria-hidden="true" class="ph ph-upload-simple"></i> Import CSV</button>
+        <button data-act="addTx" class="btn btn-primary"><i aria-hidden="true" class="ph ph-plus"></i> Add</button>`)}
       <div class="flex gap-2 mb-3"><input id="tx-q" class="field" placeholder="Search note or category" aria-label="Search" value="${esc(txFilter.q)}">
         <select id="tx-wallet" class="field max-w-[11rem]" aria-label="Wallet"><option value="">All wallets</option>${walletOptions(txFilter.wallet)}</select></div>
       <div class="card p-2" id="tx-list">${txList()}</div>`;
   },
 
   wallets() {
-    return `${heading('Wallets', `<button data-act="editWallet" class="btn btn-primary"><i class="ph ph-plus"></i> Add wallet</button>`)}
+    return `${heading('Wallets', `<button data-act="editWallet" class="btn btn-primary"><i aria-hidden="true" class="ph ph-plus"></i> Add wallet</button>`)}
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">${S.wallets.map(w => `<button data-act="editWallet" data-id="${w.id}" class="card p-4 text-left hover:border-teal-500/40">
-        <span class="flex items-center gap-3"><span class="w-10 h-10 rounded-full bg-teal-500/15 text-teal-400 flex items-center justify-center text-lg"><i class="ph ph-${WALLET_TYPES[w.type][1]}"></i></span>
+        <span class="flex items-center gap-3"><span class="w-10 h-10 rounded-full bg-teal-500/15 text-teal-400 flex items-center justify-center text-lg"><i aria-hidden="true" class="ph ph-${WALLET_TYPES[w.type][1]}"></i></span>
         <span><span class="block font-semibold">${esc(w.name)}</span><span class="block text-xs text-slate-500">${WALLET_TYPES[w.type][0]}</span></span></span>
         <span class="num block text-xl font-bold mt-3">${fmt(w.balance)}</span></button>`).join('')}</div>
       <p class="text-xs text-slate-500 mt-4">Balances are the opening balance plus the transactions you record or import. Personifinn does not connect to your bank.</p>`;
@@ -189,15 +189,15 @@ const views = {
       ${S.budgets.length ? S.budgets.map(b => { const pct = b.spent / b.limit * 100; return `<div class="card p-4 mb-3">
         <div class="flex justify-between items-center mb-2"><span class="font-semibold">${esc(b.category)}</span>
           <span class="text-sm num">${fmt(b.spent)} <span class="text-slate-500">of ${fmt(b.limit)}</span>
-          <button data-act="delBudget" data-category="${esc(b.category)}" aria-label="Remove budget" class="ml-2 text-slate-500 hover:text-rose-400"><i class="ph ph-trash"></i></button></span></div>
+          <button data-act="delBudget" data-category="${esc(b.category)}" aria-label="Remove budget" class="ml-2 text-slate-500 hover:text-rose-400"><i aria-hidden="true" class="ph ph-trash"></i></button></span></div>
         ${bar(pct, pct > 100 ? 'bg-rose-500' : pct >= 90 ? 'bg-amber-500' : 'bg-teal-500')}</div>`; }).join('') : empty('chart-pie-slice', 'No budgets yet. Set a monthly limit for a category above.')}`;
   },
 
   goals() {
-    return `${heading('Goals', `<button data-act="addGoal" class="btn btn-primary"><i class="ph ph-plus"></i> Add goal</button>`)}
+    return `${heading('Goals', `<button data-act="addGoal" class="btn btn-primary"><i aria-hidden="true" class="ph ph-plus"></i> Add goal</button>`)}
       <div class="grid sm:grid-cols-2 gap-3">${S.goals.map(g => `<div class="card p-4">
         <div class="flex justify-between"><span class="font-semibold">${esc(g.name)}</span>
-          <button data-act="delGoal" data-id="${g.id}" aria-label="Delete goal" class="text-slate-500 hover:text-rose-400"><i class="ph ph-trash"></i></button></div>
+          <button data-act="delGoal" data-id="${g.id}" aria-label="Delete goal" class="text-slate-500 hover:text-rose-400"><i aria-hidden="true" class="ph ph-trash"></i></button></div>
         <p class="num text-sm my-2">${fmt(g.saved)} <span class="text-slate-500">of ${fmt(g.target)}${g.due ? ' · by ' + esc(g.due) : ''}</span></p>
         ${bar(g.saved / g.target * 100)}
         <form data-form="contribute" class="flex gap-2 mt-3"><input type="hidden" name="id" value="${g.id}">
@@ -206,7 +206,7 @@ const views = {
   },
 
   invoices() {
-    return `${heading('Invoices', `<button data-act="addInvoice" class="btn btn-primary"><i class="ph ph-plus"></i> New invoice</button>`)}
+    return `${heading('Invoices', `<button data-act="addInvoice" class="btn btn-primary"><i aria-hidden="true" class="ph ph-plus"></i> New invoice</button>`)}
       <div class="card p-2">${S.invoices.length ? S.invoices.map(i => `<button data-act="showInvoice" data-id="${i.id}" class="w-full flex items-center gap-3 py-2.5 px-2 rounded-lg hover:bg-slate-800/60 text-left">
         <span class="flex-1 min-w-0"><span class="block text-sm font-medium truncate">${esc(i.number)} · ${esc(i.client_name)}</span>
           <span class="block text-xs text-slate-500">${i.due ? 'Due ' + esc(i.due) : 'No due date'}</span></span>
@@ -223,7 +223,7 @@ const views = {
         <div class="px-4 pb-2 flex gap-2 flex-wrap">${tips.map(t => `<button data-act="ask" data-q="${esc(t)}" class="text-xs px-3 py-1.5 rounded-full bg-slate-800 text-slate-300 hover:text-white">${esc(t)}</button>`).join('')}</div>
         <form data-form="chat" class="p-3 border-t border-slate-800 flex gap-2">
           <input name="q" class="field" placeholder="Type a message..." aria-label="Message" required maxlength="4000" autocomplete="off">
-          <button class="btn btn-primary" aria-label="Send"><i class="ph-fill ph-paper-plane-right"></i></button></form></div>`;
+          <button class="btn btn-primary" aria-label="Send"><i aria-hidden="true" class="ph-fill ph-paper-plane-right"></i></button></form></div>`;
   },
 
   settings() {
@@ -233,8 +233,8 @@ const views = {
         <div><label for="f-currency">Currency</label><select id="f-currency" name="currency" class="field">${options(CURRENCIES.map(c => [c, c]), S.user.currency)}</select></div>
         <button class="btn btn-primary">Save</button></form>
       <div class="card p-4 mb-4"><p class="text-sm text-slate-400 mb-3">Signed in as ${esc(S.user.email)}. Changing the currency relabels amounts; it does not convert them.</p>
-        <div class="flex flex-wrap gap-2"><a href="/api/export" download class="btn btn-ghost"><i class="ph ph-download-simple"></i> Export my data</a>
-        <button data-act="logout" class="btn btn-ghost"><i class="ph ph-sign-out"></i> Sign out</button></div></div>
+        <div class="flex flex-wrap gap-2"><a href="/api/export" download class="btn btn-ghost"><i aria-hidden="true" class="ph ph-download-simple"></i> Export my data</a>
+        <button data-act="logout" class="btn btn-ghost"><i aria-hidden="true" class="ph ph-sign-out"></i> Sign out</button></div></div>
       <form data-form="deleteAccount" class="card p-4 border-rose-500/20"><p class="font-semibold text-rose-300 mb-1">Delete account</p>
         <p class="text-sm text-slate-400 mb-3">Removes your account and every wallet, transaction, budget, goal and invoice. This cannot be undone.</p>
         <div class="flex gap-2"><input name="password" type="password" required class="field max-w-xs" placeholder="Your password" aria-label="Password" autocomplete="current-password">
@@ -259,14 +259,14 @@ function bubble(m) {
 function render() {
   const v = view();
   const link = ([id, label, icon], mobile) => mobile
-    ? `<a href="#/${id}" class="flex flex-col items-center gap-0.5 min-w-[4.6rem] py-2 text-[11px] ${id === v ? 'text-teal-400' : 'text-slate-400'}"><i class="ph ph-${icon} text-xl"></i>${label}</a>`
-    : `<a href="#/${id}" class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium ${id === v ? 'nav-on' : 'text-slate-300 hover:text-white'}"><i class="ph ph-${icon} text-lg"></i>${label}</a>`;
+    ? `<a href="#/${id}" class="flex flex-col items-center gap-0.5 min-w-[4.6rem] py-2 text-[11px] ${id === v ? 'text-teal-400' : 'text-slate-400'}"><i aria-hidden="true" class="ph ph-${icon} text-xl"></i>${label}</a>`
+    : `<a href="#/${id}" class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium ${id === v ? 'nav-on' : 'text-slate-300 hover:text-white'}"><i aria-hidden="true" class="ph ph-${icon} text-lg"></i>${label}</a>`;
   $('#root').innerHTML = `
     <aside class="hidden md:flex flex-col w-60 fixed inset-y-0 border-r border-slate-800 p-4 gap-1">
       <a href="#/dashboard" class="flex items-center gap-2 mb-6 px-2"><img src="/icon.svg" alt="" class="w-8 h-8"><span class="font-bold text-xl">personifinn</span></a>
       <nav class="flex flex-col gap-1" aria-label="Main">${NAV.map(n => link(n, false)).join('')}</nav></aside>
     <main class="md:ml-60 p-4 md:p-8 pb-28 md:pb-8 max-w-6xl">
-      ${offline ? `<div class="mb-4 px-4 py-2 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-300 text-sm"><i class="ph ph-wifi-slash"></i> Offline. Showing saved data; new transactions sync when you reconnect.</div>` : ''}
+      ${offline ? `<div class="mb-4 px-4 py-2 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-300 text-sm"><i aria-hidden="true" class="ph ph-wifi-slash"></i> Offline. Showing saved data; new transactions sync when you reconnect.</div>` : ''}
       ${views[v]()}</main>
     <nav class="md:hidden fixed bottom-0 inset-x-0 bg-slate-950 border-t border-slate-800 flex overflow-x-auto" aria-label="Main">${NAV.map(n => link(n, true)).join('')}</nav>`;
   const chat = $('#chat');
@@ -316,9 +316,9 @@ function invoiceModal(i) {
     <label for="inv-link">Payment link (the QR code opens it)</label>
     <div class="flex gap-2 mb-4"><input id="inv-link" class="field" readonly value="${esc(url)}"><button data-act="copy" data-text="${esc(url)}" class="btn btn-ghost">Copy</button></div>
     <div class="flex flex-wrap gap-2">
-      <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://wa.me/${phone}?text=${encodeURIComponent(msg)}"><i class="ph ph-whatsapp-logo"></i> WhatsApp</a>
-      <a class="btn btn-ghost" href="mailto:${encodeURIComponent(mail)}?subject=${encodeURIComponent('Invoice ' + i.number)}&body=${encodeURIComponent(msg)}"><i class="ph ph-envelope"></i> Email</a>
-      ${i.status === 'unpaid' ? `<button data-act="payInvoice" data-id="${i.id}" class="btn btn-primary"><i class="ph ph-check"></i> Mark as paid</button>` : ''}
+      <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://wa.me/${phone}?text=${encodeURIComponent(msg)}"><i aria-hidden="true" class="ph ph-whatsapp-logo"></i> WhatsApp</a>
+      <a class="btn btn-ghost" href="mailto:${encodeURIComponent(mail)}?subject=${encodeURIComponent('Invoice ' + i.number)}&body=${encodeURIComponent(msg)}"><i aria-hidden="true" class="ph ph-envelope"></i> Email</a>
+      ${i.status === 'unpaid' ? `<button data-act="payInvoice" data-id="${i.id}" class="btn btn-primary"><i aria-hidden="true" class="ph ph-check"></i> Mark as paid</button>` : ''}
       <button data-act="delInvoice" data-id="${i.id}" class="btn btn-danger">Delete</button></div>`);
 }
 

@@ -16,7 +16,7 @@ const WALLET_TYPES = ['bank', 'ewallet', 'cash', 'paypal', 'rdn', 'card', 'other
 const CURRENCIES = ['IDR', 'USD', 'EUR', 'SGD', 'MYR', 'JPY', 'GBP', 'AUD'];
 const CSP = "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com https://cdnjs.cloudflare.com; "
   + "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src https://fonts.gstatic.com https://unpkg.com; "
-  + "img-src 'self' data:; connect-src 'self' https://formsubmit.co; form-action 'self' https://formsubmit.co; frame-ancestors 'none'; base-uri 'self'";
+  + "img-src 'self' data:; connect-src 'self' https://formsubmit.co https://cdn.tailwindcss.com https://unpkg.com https://cdnjs.cloudflare.com https://fonts.googleapis.com https://fonts.gstatic.com; form-action 'self' https://formsubmit.co; frame-ancestors 'none'; base-uri 'self'";
 
 class HttpError extends Error {
   constructor(status, message) { super(message); this.status = status; }
