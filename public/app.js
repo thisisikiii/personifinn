@@ -138,7 +138,7 @@ const views = {
     const now = S.months.at(-1), net = S.wallets.reduce((a, w) => a + w.balance, 0);
     const max = Math.max(1, ...S.months.flatMap(m => [m.income, m.expense]));
     const top = Math.max(1, ...S.byCategory.map(c => c.spent));
-    const stat = (label, value, cls = '') => `<div class="card p-4"><p class="text-xs text-slate-400">${label}</p><p class="num text-xl font-bold mt-1 ${cls}">${value}</p></div>`;
+    const stat = (label, value, cls = '') => `<div class="card p-4"><p class="text-xs text-slate-400">${label}</p><p class="num text-lg font-bold mt-1 truncate ${cls}">${value}</p></div>`;
     return `${heading(`Hi, ${esc(S.user.name)}`, `<button data-act="addTx" class="btn btn-primary"><i aria-hidden="true" class="ph ph-plus"></i> Add transaction</button>`)}
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
         ${stat('Total net worth', fmt(net))}${stat('Income this month', fmt(now.income), 'text-teal-400')}
